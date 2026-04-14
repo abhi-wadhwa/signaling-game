@@ -155,7 +155,11 @@ class SpenceModel:
             f"  Low type: payoff={payoff_low:.4f}, deviation payoff={dev_low:.4f}\n"
             f"  High type: payoff={payoff_high:.4f}, deviation payoff={dev_high:.4f}\n"
             f"  Sustainable: "
-            f"{'yes' if payoff_low >= dev_low - 1e-9 and payoff_high >= dev_high - 1e-9 else 'no (under pessimistic off-path beliefs)'}"
+            + (
+                "yes"
+                if payoff_low >= dev_low - 1e-9 and payoff_high >= dev_high - 1e-9
+                else "no"
+            )
         )
 
         return SpenceEquilibrium(

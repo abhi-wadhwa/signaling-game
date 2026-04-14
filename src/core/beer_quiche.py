@@ -33,8 +33,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from src.core.signaling import SignalingGame, SenderType, Signal, Action, PBE
-
+from src.core.signaling import PBE, Action, SenderType, Signal, SignalingGame
 
 # Standard type/signal/action indices
 TOUGH, WEAK = 0, 1
@@ -334,7 +333,7 @@ class BeerQuicheGame:
 
         # For mix_type to mix, need payoff at pure_signal to equal u_mix_other
         # At pure_signal, receiver may need to mix Fight/NF
-        # u_mix_pure = r_fight * u_S(mix_type, pure_signal, F) + (1-r_fight) * u_S(mix_type, pure_signal, NF)
+        # u_mix_pure = r_fight * u_S(mix, pure, F) + (1-r_fight) * u_S(mix, pure, NF)
         u_mix_f = game.u_s(mix_type, pure_signal, FIGHT)
         u_mix_nf = game.u_s(mix_type, pure_signal, NOT_FIGHT)
 
@@ -352,7 +351,7 @@ class BeerQuicheGame:
         # This pins down beliefs at pure_signal
         # eu_fight = eu_nf at pure_signal
         # sum_t mu(t|m) * u_R(t, m, F) = sum_t mu(t|m) * u_R(t, m, NF)
-        # For 2 types: mu * u_R(0, m, F) + (1-mu) * u_R(1, m, F) = mu * u_R(0, m, NF) + (1-mu) * u_R(1, m, NF)
+        # 2 types: mu*u_R(0,m,F) + (1-mu)*u_R(1,m,F) = mu*u_R(0,m,NF) + (1-mu)*u_R(1,m,NF)
         # mu = belief that type=TOUGH
 
         r_tough_f = game.u_r(TOUGH, pure_signal, FIGHT)

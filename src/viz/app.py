@@ -11,17 +11,15 @@ Features:
 
 from __future__ import annotations
 
-import streamlit as st
-import numpy as np
 import plotly.graph_objects as go
+import streamlit as st
 from plotly.subplots import make_subplots
 
-from src.core.spence import SpenceModel
+from src.core.beer_quiche import BEER, FIGHT, NOT_FIGHT, QUICHE, TOUGH, WEAK, BeerQuicheGame
 from src.core.crawford_sobel import CrawfordSobelModel
-from src.core.beer_quiche import BeerQuicheGame, TOUGH, WEAK, BEER, QUICHE, FIGHT, NOT_FIGHT
-from src.core.intuitive_criterion import intuitive_criterion_filter
 from src.core.d1_criterion import d1_criterion_filter
-
+from src.core.intuitive_criterion import intuitive_criterion_filter
+from src.core.spence import SpenceModel
 
 st.set_page_config(
     page_title="Signaling Game Solver",
@@ -46,12 +44,12 @@ tab1, tab2, tab3, tab4 = st.tabs([
 # ── Tab 1: Belief Updating Visualizer ──────────────────────────────────────
 with tab1:
     st.header("Bayesian Belief Updating")
-    st.markdown(
-        r"""
-        **Bayes' Rule** in signaling games:
-        $$\mu(\theta \mid m) = \frac{P(\theta) \cdot \sigma(m \mid \theta)}{\sum_{\theta'} P(\theta') \cdot \sigma(m \mid \theta')}$$
-        """
+    bayes_formula = (
+        r"$$\mu(\theta|m)="
+        r"\frac{P(\theta)\sigma(m|\theta)}"
+        r"{\sum_{\theta'}P(\theta')\sigma(m|\theta')}$$"
     )
+    st.markdown(f"**Bayes' Rule** in signaling games:\n{bayes_formula}")
 
     col1, col2 = st.columns(2)
 
@@ -354,7 +352,7 @@ with tab4:
         Standard payoffs: Tough prefers Beer, Weak prefers Quiche; both prefer Not Fight.
         Receiver wants to Fight Weak, Not Fight Tough.
 
-        **Intuitive Criterion** selects the pooling-on-Beer equilibrium when $P(\text{Tough})$ is high.
+        **Intuitive Criterion** selects pooling-on-Beer when $P(\text{Tough})$ is high.
         """
     )
 

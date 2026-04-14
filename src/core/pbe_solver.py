@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from itertools import product
 
-from src.core.signaling import SignalingGame, PBE
+from src.core.signaling import PBE, SignalingGame
 
 
 class PBESolver:

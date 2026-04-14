@@ -20,7 +20,7 @@ This eliminates "unreasonable" PBE supported by implausible off-path beliefs.
 
 from __future__ import annotations
 
-from src.core.signaling import SignalingGame, PBE
+from src.core.signaling import PBE, SignalingGame
 
 
 def _equilibrium_payoff(pbe: PBE, game: SignalingGame, type_idx: int) -> float:

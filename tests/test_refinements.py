@@ -1,16 +1,15 @@
 """Tests for equilibrium refinements (Intuitive Criterion and D1)."""
 
-import pytest
 import numpy as np
 
-from src.core.beer_quiche import BeerQuicheGame, TOUGH, WEAK, BEER, QUICHE, FIGHT, NOT_FIGHT
-from src.core.signaling import SignalingGame, SenderType, Signal, Action, PBE
+from src.core.beer_quiche import BEER, QUICHE, TOUGH, WEAK, BeerQuicheGame
+from src.core.d1_criterion import d1_criterion_filter
 from src.core.intuitive_criterion import (
-    intuitive_criterion_filter,
     check_intuitive_criterion,
+    intuitive_criterion_filter,
 )
-from src.core.d1_criterion import d1_criterion_filter, check_d1_criterion
 from src.core.pbe_solver import PBESolver
+from src.core.signaling import Action, SenderType, Signal, SignalingGame
 
 
 class TestIntuitiveCriterion:

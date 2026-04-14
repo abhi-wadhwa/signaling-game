@@ -20,8 +20,8 @@ After restricting beliefs, check if remaining PBE is still an equilibrium.
 
 from __future__ import annotations
 
-from src.core.signaling import SignalingGame, PBE
 from src.core.intuitive_criterion import _equilibrium_payoff
+from src.core.signaling import PBE, SignalingGame
 
 
 def _compute_d_sets(

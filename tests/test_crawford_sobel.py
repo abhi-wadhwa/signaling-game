@@ -1,7 +1,6 @@
 """Tests for the Crawford-Sobel cheap talk model."""
 
 import pytest
-import numpy as np
 
 from src.core.crawford_sobel import CrawfordSobelModel
 

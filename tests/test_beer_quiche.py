@@ -1,10 +1,7 @@
 """Tests for the Beer-Quiche signaling game."""
 
-import pytest
-import numpy as np
 
-from src.core.beer_quiche import BeerQuicheGame, TOUGH, WEAK, BEER, QUICHE, FIGHT, NOT_FIGHT
-from src.core.signaling import PBE
+from src.core.beer_quiche import BEER, FIGHT, NOT_FIGHT, QUICHE, TOUGH, WEAK, BeerQuicheGame
 
 
 class TestBeerQuicheGame:

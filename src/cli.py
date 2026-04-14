@@ -6,14 +6,14 @@ from __future__ import annotations
 
 import typer
 from rich.console import Console
-from rich.table import Table
 from rich.panel import Panel
+from rich.table import Table
 
-from src.core.spence import SpenceModel
-from src.core.crawford_sobel import CrawfordSobelModel
 from src.core.beer_quiche import BeerQuicheGame
-from src.core.intuitive_criterion import intuitive_criterion_filter
+from src.core.crawford_sobel import CrawfordSobelModel
 from src.core.d1_criterion import d1_criterion_filter
+from src.core.intuitive_criterion import intuitive_criterion_filter
+from src.core.spence import SpenceModel
 
 app = typer.Typer(
     name="signaling-game",
@@ -105,7 +105,8 @@ def beer_quiche(
     for i, pbe in enumerate(pbe_list):
         console.print(f"  PBE {i + 1}: {pbe.label} [{pbe.equilibrium_type}]")
         for t in range(2):
-            console.print(f"    Type {game.types[t].name} payoff: {pbe.sender_payoffs.get(t, 0):.2f}")
+            payoff = pbe.sender_payoffs.get(t, 0)
+            console.print(f"    Type {game.types[t].name} payoff: {payoff:.2f}")
 
     if apply_ic:
         console.print()
